@@ -15,3 +15,16 @@ get_max_profit(stock_prices)
 
 No "shorting"—you need to buy before you can sell. Also, you can't buy and sell in the same time step—at least 1 minute has to pass.
 */
+
+function getMaxProfit(stockPrices){
+
+    let buy = stockPrices[0], maxProfit = 0 ;
+    for(let i =1; i<stockPrices.length; i++){
+        if(buy>stockPrices[i]){
+            buy = stockPrices[i];
+        }else{
+            maxProfit = Math.max(stockPrices[i]-buy,maxProfit);
+        }
+    }
+    return maxProfit;
+}
