@@ -154,6 +154,43 @@ class SinglyLinkedList{
         return this;
 
 
+        /**
+         * node->n; prev ->P; next->NE
+         *             
+         *             [1,  2,  3,  4,  5,  6,  7,  8,  9]
+         *              N=1; P = null; NE= undefined // Before loop start
+         *              
+         *  
+         * 
+         *              NE=2->3; N=1->null(P); P = N(1->null); N = NE(2->3) // i=0
+         * 
+         *              NE=3->4; N=2->1(P)->null; P = N(2->1->null); N= NE(3->4)  // i =1
+         * 
+         *              NE= 4->5; N = 3->2(P)->1->null; P = N(3->2->1->null;); N = NE(4->5)  // i= 2
+         * 
+         *              NE=5->6; N=4->3(P)->2->1->null; P = N(4->3->2->1->null); N = NE(5->6)  // i =3
+         * 
+         *              NE= 6->7; N = 5->4(P)->3P->2->1->null; P= N(5->4->3P->2->1->null); N= NE(6->7) //i=4
+         * 
+         *              NE= 7->8; N = 6->5(P)->4->3P->2->1->null; P = N(6->5->4->3P->2->1->null); N=NE(7->8) // i=5
+         * 
+         *              NE = 8->9; N = 7->6(P)->5->4->3P->2->1->null; P = N(7->6->5->4->3P->2->1->null); N= NE(8->9) //i=6
+         * 
+         *              NE = 9->null; N = 8->7(P)->6->5->4->3P->2->1->null; P = N(8->7->6->5->4->3P->2->1->null); N= NE(9->null) //i=7
+         * 
+         *              NE = null; N = 9->8(P)->7->6->5->4->3P->2->1->null; P = N(9->8->7->6->5->4->3P->2->1->null); N= NE(null) //i=8
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * */
+
+
     }
 }
 
