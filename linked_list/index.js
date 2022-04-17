@@ -133,7 +133,7 @@ class SinglyLinkedList{
 
     print(){
         let arr =[], current = this.head;
-        while(current.next){
+        while(current){
             arr.push(current.val);
             current = current.next;
         }
@@ -181,15 +181,21 @@ class SinglyLinkedList{
          *              NE = null; N = 9->8(P)->7->6->5->4->3P->2->1->null; P = N(9->8->7->6->5->4->3P->2->1->null); N= NE(null) //i=8
          * 
          * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
          * */
+    }
 
+    reverse2(){
+
+        let node = this.head, next, prev = null;
+
+        while(node){
+            next = node.next;
+            node.next=prev;
+            prev = node;
+            node= next;
+        }
+        this.tail = this.head;
+        this.head = prev;
 
     }
 }
