@@ -171,6 +171,28 @@ class DoublyLinkedList{
         
     }
 
+    reverse(){
+        if(this.length === 0) return undefined;
+        
+        if(this.length !== 1){
+            let node = this.head;
+            while(node.next){
+                let prev = node.prev;
+                node.prev = node.next;
+                node.next = prev;
+                node = node.prev;
+            }
+
+            const tail = this.tail;
+            this.tail = this.head;
+            this.head = tail;
+            this.head.next = this.head.prev;
+            this.head.prev = null;
+        }
+        return this;
+        
+    }
+
 }
 
 const list = new DoublyLinkedList();
