@@ -1,3 +1,3 @@
 # Data structure in javascript
 
-This reposetory will contain data structure algoritham in Javascript. will be creating diffrent folder for diffrent problames in this repo.
+This repository will contain data structure algoritham in Javascript. will be creating diffrent folder for different problems in this repo.
