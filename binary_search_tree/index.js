@@ -75,9 +75,67 @@ class BinarySearchTree{
         return data;
     }
 
+    dfsPreOrder(){
+
+        let data =[], current = this.root;
+
+        function triverse(node){
+            if(node){
+                data.push(node.value);
+                if(node.left) triverse(node.left);
+                if(node.right) triverse(node.right);
+            }
+        }
+        triverse(current);
+        return data;
+
+    }
+
+    dfsPostOrder(){
+
+        let data =[];
+
+        function triverse(node){
+            if(node.left) triverse(node.left);
+            if(node.right) triverse(node.right);
+            data.push(node.value);
+        }
+
+        triverse(this.root);
+
+        return data;
+
+    }
+
+    dfsInOrder(){
+
+        let data =[];
+
+        function triverse(node){
+            if(node.left) triverse(node.left);
+            data.push(node.value);
+            if(node.right) triverse(node.right);
+        }
+
+        triverse(this.root);
+
+        return data;
+
+    }
+
 
 
 }
 
 const bst = new BinarySearchTree();
+
+
+//  10 6 15 3 8 20
+
+bst.insert(10);
+bst.insert(6);
+bst.insert(15);
+bst.insert(3);
+bst.insert(8);
+bst.insert(20);
 
