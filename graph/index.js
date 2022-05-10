@@ -43,6 +43,47 @@ class Graph{
       dfs(start);
       return result;
    }
+   depthFirstLoop(start){
+      const stack = [];
+      const result = [];
+      const visited = {};
+
+      stack.push(start);
+
+      while(stack.length){
+         const vertex = stack.pop();
+
+         if(!visited[vertex]){
+            visited[vertex] = true;
+            result.push(vertex);
+            stack.push(...this.adjacencyList[vertex]);
+         }
+      }
+
+      return result;
+
+   }
+   breathFirst(start){
+      const q = [];
+      const result = [];
+      const visited = {};
+      let vertex;
+
+      q.push(start)
+
+        while(q.length){
+          vertex = q.shift();
+
+         if(!visited[vertex]){
+            visited[vertex] = true;
+            result.push(vertex);
+            q.push(...this.adjacencyList[vertex]);
+         }
+      }
+
+      return result;
+
+   }
 
    
 }
@@ -64,6 +105,28 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
+
+/**
+ * 
+ *                         A
+ *                      /     \
+ *                     B       C
+ *                      \      /
+ *                      D------E
+ *                      \     /
+ *                         F
+ *          
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
 
 
 
