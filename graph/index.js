@@ -4,23 +4,44 @@ class Graph{
    	this.adjacencyList = {}
    }
 
-   addVertix(vertix){
-      if(!this.adjacencyList[vertix]) this.adjacencyList[vertix] = [];
+   addVertex(vertex){
+      if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
    }
-   removeVertix(vertix){
-         this.adjacencyList[vertix].forEach(v=>{
-            this.removeEdge(vertix,v);
+   removeVertex(vertex){
+         this.adjacencyList[vertex].forEach(v=>{
+            this.removeEdge(vertex,v);
          });
-         delete this.adjacencyList[vertix];
+         delete this.adjacencyList[vertex];
    }
    addEdge(v1, v2){
       this.adjacencyList[v1].push(v2);
       this.adjacencyList[v2].push(v1);
    }
-   removeEdge(vertix1, vertix2){
-      this.adjacencyList[vertix1] = this.adjacencyList[vertix1].filter(v=>v!==vertix2);
+   removeEdge(vertex1, vertex2){
+      this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(v=>v!==vertex2);
 
-      this.adjacencyList[vertix2] = this.adjacencyList[vertix2].filter(v=>v!==vertix1);
+      this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(v=>v!==vertex1);
+   }
+
+   depthFirstRecursive(start){
+      const result = [];
+      const visited = {};
+      const adjacencyList = this.adjacencyList;
+      function dfs(vertex){
+         if(!vertex) return null;
+
+         visited[vertex] = true;
+         result.push(vertex);
+         adjacencyList[vertex].forEach(neighbor => {
+            if(!visited[neighbor]) return dfs(neighbor);
+         })
+
+
+
+      }
+
+      dfs(start);
+      return result;
    }
 
    
@@ -28,20 +49,21 @@ class Graph{
 
 const g = new Graph();
 
-g.addVertix('Delhi');
-g.addVertix('Noida');
-g.addVertix('Gurgaon');
-g.addVertix('Patna');
-g.addVertix('Extension');
-g.addVertix('Gr Noida');
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
 
-g.addEdge('Gr Noida', 'Noida');
-g.addEdge('Delhi', 'Noida');
-g.addEdge('Delhi', 'Patna');
-g.addEdge('Patna', 'Noida');
-g.addEdge('Gr Noida', 'Extension');
-g.addEdge('Delhi', 'Gr Noida');
-g.addEdge('Delhi', 'Gurgaon');
+
+g.addEdge('A', 'B');
+g.addEdge('A', 'C');
+g.addEdge('B', 'D');
+g.addEdge('C', 'E');
+g.addEdge('D', 'E');
+g.addEdge('D', 'F');
+g.addEdge('E', 'F');
 
 
 
